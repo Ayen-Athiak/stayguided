@@ -19,6 +19,7 @@ const typeLabel: Record<string, string> = {
 
 export default function ProductCard({ product, onSelect }: Props) {
   const isSand = product.cover_color === 'sand'
+  const lineClass = isSand ? 'rc-cover-line rc-cover-line-dark' : 'rc-cover-line'
 
   return (
     <div className="rc" onClick={() => onSelect(product)}>
@@ -26,11 +27,19 @@ export default function ProductCard({ product, onSelect }: Props) {
         <div className={`rc-type-pill ${isSand ? 'rc-type-pill-dark' : ''}`}>
           {typeLabel[product.type] || product.type}
         </div>
+        <div className={lineClass} />
         <div
           className="rc-cover-title"
           style={isSand ? { color: 'var(--green)' } : undefined}
         >
           {product.name}
+        </div>
+        <div className={lineClass} />
+        <div
+          className="rc-cover-sub"
+          style={isSand ? { color: 'var(--green)' } : undefined}
+        >
+          StayGuided
         </div>
       </div>
       <div className="rc-body">
