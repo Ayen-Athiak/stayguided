@@ -53,7 +53,6 @@ export default function CheckoutModal({ product, onClose }: Props) {
         price: product.price / 100,
       })
 
-      // Redirect to Lemon Squeezy checkout
       window.location.href = data.url
 
     } catch (err) {
@@ -73,7 +72,17 @@ export default function CheckoutModal({ product, onClose }: Props) {
         <button className="modal-close" onClick={onClose} aria-label="Close">×</button>
 
         <div className={`modal-cover ${coverClass[product.cover_color] || 'cov-g'}`}>
-          {product.name}
+          <div style={{ fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase' as const, opacity: 0.6, marginBottom: '0.5rem' }}>
+            {product.type}
+          </div>
+          <div style={{ width: 24, height: '0.5px', background: 'rgba(245,240,232,0.4)', marginBottom: '0.5rem' }} />
+          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.1rem, 3vw, 1.5rem)', fontWeight: 400, lineHeight: 1.3, textAlign: 'center' as const, padding: '0 1rem' }}>
+            {product.name}
+          </div>
+          <div style={{ width: 24, height: '0.5px', background: 'rgba(245,240,232,0.4)', marginTop: '0.5rem' }} />
+          <div style={{ fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase' as const, opacity: 0.4, marginTop: '0.5rem' }}>
+            StayGuided
+          </div>
         </div>
 
         <div className="modal-body">
