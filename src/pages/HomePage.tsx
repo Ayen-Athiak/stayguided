@@ -93,15 +93,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <div className="divider" />
-
-      {/* TRUST BAND */}
-      <div className="trust-band">
-        <div className="tb"><div className="tb-n">AI</div><div className="tb-l">Powered thinking</div></div>
-        <div className="tb"><div className="tb-n">3×</div><div className="tb-l">Faster to understand</div></div>
-        <div className="tb"><div className="tb-n">100%</div><div className="tb-l">Instant download</div></div>
-        <div className="tb"><div className="tb-n">∞</div><div className="tb-l">Lifetime access</div></div>
-      </div>
+      
 
       {/* MISSION */}
       <section className="mission" id="mission">
