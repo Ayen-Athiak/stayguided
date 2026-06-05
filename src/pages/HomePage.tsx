@@ -68,12 +68,13 @@ export default function HomePage() {
           alignItems: 'center', justifyContent: 'center',
           gap: '2rem',
         }}>
-          <button
+         <button
             onClick={() => setMenuOpen(false)}
             style={{
-              position: 'absolute', top: '1.5rem', right: '2rem',
+              position: 'absolute', top: '1.2rem', right: '1.5rem',
               background: 'none', border: 'none', cursor: 'pointer',
-              color: 'var(--cream)', fontSize: '1.6rem', lineHeight: '1',
+              color: 'var(--cream)', fontSize: '1.8rem', lineHeight: '1',
+              padding: '0.5rem', minWidth: '44px', minHeight: '44px',
             }}
           >
             {'x'}
