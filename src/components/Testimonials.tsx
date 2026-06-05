@@ -64,49 +64,29 @@ const thirdColumn = testimonials.slice(6, 9)
 
 function TestimonialCard({ text, image, name, role }: typeof testimonials[0]) {
   return (
-    <div style={{
-      background: 'var(--white)',
-      border: '0.5px solid var(--border2)',
-      padding: '1.5rem',
-      marginBottom: '1rem',
-      maxWidth: '280px',
-      width: '100%',
-    }}>
-      <div style={{
-        fontFamily: 'Cormorant Garamond, serif',
-        fontStyle: 'italic',
-        fontSize: '0.98rem',
-        color: 'var(--text)',
-        lineHeight: 1.7,
-        fontWeight: 300,
-        marginBottom: '1.1rem',
-      }}>
-        "{text}"
-      </div>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+    <div className="vc" style={{ marginBottom: '1.25rem' }}>
+      <div className="vc-stars">★★★★★</div>
+      <p className="vc-quote">"{text}"</p>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: '1rem' }}>
         <img
           src={image}
           alt={name}
-          width={36}
-          height={36}
-          style={{ borderRadius: '50%', objectFit: 'cover', width: 36, height: 36, flexShrink: 0 }}
+          style={{ borderRadius: '50%', objectFit: 'cover', width: 32, height: 32, flexShrink: 0 }}
         />
-        <div>
-          <div style={{ fontSize: '0.8rem', fontWeight: 500, color: 'var(--green)', lineHeight: 1.3 }}>{name}</div>
-          <div style={{ fontSize: '0.72rem', color: 'var(--text-dim)', lineHeight: 1.3 }}>{role}</div>
-        </div>
+        <p className="vc-who">
+          <strong>{name}</strong> — {role}
+        </p>
       </div>
     </div>
   )
 }
 
-function TestimonialsColumn({ items, duration = 15, className = '' }: {
+function TestimonialsColumn({ items, duration = 15 }: {
   items: typeof testimonials
   duration?: number
-  className?: string
 }) {
   return (
-    <div className={className} style={{ overflow: 'hidden' }}>
+    <div style={{ overflow: 'hidden', flex: 1 }}>
       <motion.div
         animate={{ translateY: '-50%' }}
         transition={{ duration, repeat: Infinity, ease: 'linear', repeatType: 'loop' }}
@@ -129,18 +109,10 @@ export default function Testimonials() {
         <p className="ey">Voices from the community</p>
         <h2 className="st">People who stayed <em>guided</em></h2>
       </div>
-      <div style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '1rem',
-        maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
-        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
-        maxHeight: '600px',
-        overflow: 'hidden',
-      }}>
+      <div className="testi-scroll-wrap">
         <TestimonialsColumn items={firstColumn} duration={18} />
-        <TestimonialsColumn items={secondColumn} duration={22} className="hidden-mobile" />
-        <TestimonialsColumn items={thirdColumn} duration={16} className="hidden-tablet" />
+        <TestimonialsColumn items={secondColumn} duration={22} />
+        <TestimonialsColumn items={thirdColumn} duration={16} />
       </div>
     </section>
   )
