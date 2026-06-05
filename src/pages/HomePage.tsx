@@ -49,6 +49,9 @@ export default function HomePage() {
     textTransform: 'uppercase',
     color: 'rgba(245,240,232,0.7)',
     textDecoration: 'none',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
   }
 
   return (
@@ -73,7 +76,7 @@ export default function HomePage() {
               color: 'var(--cream)', fontSize: '1.6rem', lineHeight: '1',
             }}
           >
-            {'×'}
+            {'x'}
           </button>
           <div style={{
             fontFamily: 'Cormorant Garamond, serif',
@@ -83,13 +86,16 @@ export default function HomePage() {
             {'StayGuided'}
           </div>
           {navLinks.map(({ href, label }) => (
-            <a key={href} href={href} onClick={() => setMenuOpen(false)} style={menuLinkStyle}>
+            <button
+              key={href}
+              onClick={() => { setMenuOpen(false); window.location.href = href; }}
+              style={menuLinkStyle}
+            >
               {label}
-            </a>
+            </button>
           ))}
-          
-            href="#resources"
-            onClick={() => setMenuOpen(false)}
+          <button
+            onClick={() => { setMenuOpen(false); window.location.href = '#resources'; }}
             style={{
               marginTop: '1rem',
               background: 'var(--cream)',
@@ -100,11 +106,12 @@ export default function HomePage() {
               textTransform: 'uppercase',
               fontWeight: 500,
               fontFamily: 'Jost, sans-serif',
-              textDecoration: 'none',
+              border: 'none',
+              cursor: 'pointer',
             }}
           >
             {'Explore resources'}
-          </a>
+          </button>
         </div>
       )}
 
