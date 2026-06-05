@@ -331,9 +331,7 @@ export default function HomePage() {
       </section>
 
       <footer>
-        <div className="fl">
-          <LogoMark color="#f5f0e8" />{'Stay'}<em>{'Guided'}</em>
-        </div>
+        <div className="fl"><LogoMark color="#f5f0e8" />{'Stay'}<em>{'Guided'}</em></div>
         <ul className="flinks">
           <li><a href="#mission">{'Mission'}</a></li>
           <li><a href="#resources">{'Resources'}</a></li>
