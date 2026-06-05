@@ -411,8 +411,9 @@ footer {
   padding: 2.2rem 4rem;
   display: flex; justify-content: space-between; align-items: center;
 }
-.fl { font-family: 'Fraunces', serif; font-size: 1.15rem; color: var(--cream); font-weight: 300; letter-spacing: 0; }
-.fl span { font-style: italic; margin-left: -0.1em; }
+.fl { font-family: 'Fraunces', serif; font-size: 1.15rem; color: var(--cream); font-weight: 300; letter-spacing: 0; display: flex; align-items: center; gap: 6px; }
+.fl span { font-style: normal; margin: 0; padding: 0; }
+.fl em { font-style: italic; font-weight: 300; }
 .flinks { display: flex; gap: 2rem; list-style: none; }
 .flinks a { font-size: 0.68rem; color: rgba(245,240,232,0.35); letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; cursor: pointer; }
 .flinks a:hover { color: rgba(245,240,232,0.75); }
