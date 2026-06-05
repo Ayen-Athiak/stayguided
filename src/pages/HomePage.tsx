@@ -331,7 +331,7 @@ export default function HomePage() {
       </section>
 
       <footer>
-        <div className="fl" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <div className="fl" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
           <LogoMark color="#f5f0e8" />{'Stay'}<span>{'Guided'}</span>
         </div>
         <ul className="flinks">
