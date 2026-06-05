@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useProducts } from '../hooks/useProducts'
 import ProductCard from '../components/ProductCard'
 import CheckoutModal from '../components/CheckoutModal'
+import Testimonials from '../components/Testimonials'
 import { trackEvent } from '../lib/analytics'
 import type { Product } from '../types'
-import Testimonials from '../components/Testimonials'
 
 const FILTERS = ['all', 'ebook', 'canva', 'carousel'] as const
 type Filter = typeof FILTERS[number]
@@ -21,6 +21,7 @@ export default function HomePage() {
   const [selected, setSelected] = useState<Product | null>(null)
   const [newsletter, setNewsletter] = useState('')
   const [newsletterMsg, setNewsletterMsg] = useState('')
+  const [menuOpen, setMenuOpen] = useState(false)
 
   const { products, loading } = useProducts(filter)
 
@@ -41,6 +42,67 @@ export default function HomePage() {
         <CheckoutModal product={selected} onClose={() => setSelected(null)} />
       )}
 
+      {/* MOBILE MENU OVERLAY */}
+      {menuOpen && (
+        <div style={{
+          position: 'fixed', inset: 0, zIndex: 999,
+          background: 'var(--green3)',
+          display: 'flex', flexDirection: 'column',
+          alignItems: 'center', justifyContent: 'center',
+          gap: '2rem',
+        }}>
+          <button
+            onClick={() => setMenuOpen(false)}
+            style={{
+              position: 'absolute', top: '1.5rem', right: '2rem',
+              background: 'none', border: 'none', cursor: 'pointer',
+              color: 'var(--cream)', fontSize: '1.6rem', lineHeight: 1,
+            }}
+          >✕</button>
+          <div style={{
+            fontFamily: 'Cormorant Garamond, serif',
+            fontSize: '1.5rem', color: 'var(--cream)', fontWeight: 300,
+            marginBottom: '1rem',
+          }}>
+            Stay<em style={{ fontStyle: 'italic' }}>Guided</em>
+          </div>
+          {[
+            { href: '#mission', label: 'Our mission' },
+            { href: '#resources', label: 'Resources' },
+            { href: '#voices', label: 'Voices' },
+            { href: '#letter', label: 'Newsletter' },
+          ].map(({ href, label }) => (
+            
+              key={href}
+              href={href}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                fontFamily: 'Jost, sans-serif',
+                fontSize: '0.8rem', letterSpacing: '0.22em',
+                textTransform: 'uppercase', color: 'rgba(245,240,232,0.7)',
+                textDecoration: 'none',
+              }}
+            >
+              {label}
+            </a>
+          ))}
+          
+            href="#resources"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              marginTop: '1rem',
+              background: 'var(--cream)', color: 'var(--green)',
+              padding: '0.85rem 2.5rem', fontSize: '0.72rem',
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+              fontWeight: 500, fontFamily: 'Jost, sans-serif',
+              textDecoration: 'none',
+            }}
+          >
+            Explore resources
+          </a>
+        </div>
+      )}
+
       {/* NAV */}
       <nav>
         <div className="nav-logo">Stay<span>Guided</span></div>
@@ -50,7 +112,14 @@ export default function HomePage() {
           <li><a href="#voices">Voices</a></li>
           <li><a href="#letter">Newsletter</a></li>
         </ul>
-        <a href="#resources" className="nav-pill">Explore resources</a>
+        <a href="#resources" className="nav-pill nav-pill-desktop">Explore resources</a>
+        <button
+          className="nav-hamburger"
+          onClick={() => setMenuOpen(true)}
+          aria-label="Open menu"
+        >
+          <span /><span /><span />
+        </button>
       </nav>
 
       {/* HERO */}
@@ -93,8 +162,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      
 
       {/* MISSION */}
       <section className="mission" id="mission">
@@ -219,7 +286,7 @@ export default function HomePage() {
 
       {/* VOICES */}
       <Testimonials />
-      
+
       {/* NEWSLETTER */}
       <section className="letter" id="letter">
         <div className="letter-inner">
