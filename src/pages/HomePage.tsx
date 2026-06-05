@@ -332,7 +332,8 @@ export default function HomePage() {
 
       <footer>
         <div className="fl" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <LogoMark color="#f5f0e8" />{'Stay'}<span>{'Guided'}</span>
+          <LogoMark color="#f5f0e8" />
+          <span style={{ fontStyle: 'normal' }}>{'Stay'}<em>{'Guided'}</em></span>
         </div>
         <ul className="flinks">
           <li><a href="#mission">{'Mission'}</a></li>
