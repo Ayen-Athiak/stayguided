@@ -128,8 +128,7 @@ export default function HomePage() {
 
       <nav>
         <div className="nav-logo" style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-          <LogoMark />
-          {'Stay'}<span style={{ marginLeft: 0 }}>{'Guided'}</span>
+          <LogoMark />{'Stay'}<span>{'Guided'}</span>
         </div>
         <ul className="nav-links">
           {navLinks.map(({ href, label }) => (
