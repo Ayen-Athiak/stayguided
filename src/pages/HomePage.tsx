@@ -16,6 +16,14 @@ const filterLabel: Record<Filter, string> = {
   carousel: 'Carousels',
 }
 
+const LogoMark = ({ color = '#3a5a40' }: { color?: string }) => (
+  <svg width="22" height="24" viewBox="0 0 26 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="1" y="1" width="24" height="26" rx="2" stroke={color} strokeWidth="1"/>
+    <path d="M8 18 L13 10 L18 18" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <line x1="10" y1="16" x2="16" y2="16" stroke={color} strokeWidth="1.5" strokeLinecap="round"/>
+  </svg>
+)
+
 export default function HomePage() {
   const [filter, setFilter] = useState<Filter>('all')
   const [selected, setSelected] = useState<Product | null>(null)
@@ -43,7 +51,7 @@ export default function HomePage() {
   ]
 
   const menuLinkStyle: React.CSSProperties = {
-    fontFamily: 'Jost, sans-serif',
+    fontFamily: 'Plus Jakarta Sans, sans-serif',
     fontSize: '0.8rem',
     letterSpacing: '0.22em',
     textTransform: 'uppercase',
@@ -68,7 +76,7 @@ export default function HomePage() {
           alignItems: 'center', justifyContent: 'center',
           gap: '2rem',
         }}>
-         <button
+          <button
             onClick={() => setMenuOpen(false)}
             style={{
               position: 'absolute', top: '1.2rem', right: '1.5rem',
@@ -80,10 +88,12 @@ export default function HomePage() {
             {'x'}
           </button>
           <div style={{
-            fontFamily: 'Cormorant Garamond, serif',
+            fontFamily: 'Fraunces, serif',
             fontSize: '1.5rem', color: 'var(--cream)', fontWeight: 300,
             marginBottom: '1rem',
+            display: 'flex', alignItems: 'center', gap: 10,
           }}>
+            <LogoMark color="#f5f0e8" />
             {'StayGuided'}
           </div>
           {navLinks.map(({ href, label }) => (
@@ -106,7 +116,7 @@ export default function HomePage() {
               letterSpacing: '0.18em',
               textTransform: 'uppercase',
               fontWeight: 500,
-              fontFamily: 'Jost, sans-serif',
+              fontFamily: 'Plus Jakarta Sans, sans-serif',
               border: 'none',
               cursor: 'pointer',
             }}
@@ -117,7 +127,10 @@ export default function HomePage() {
       )}
 
       <nav>
-        <div className="nav-logo">{'Stay'}<span>{'Guided'}</span></div>
+        <div className="nav-logo" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <LogoMark color="#3a5a40" />
+          {'Stay'}<span>{'Guided'}</span>
+        </div>
         <ul className="nav-links">
           {navLinks.map(({ href, label }) => (
             <li key={href}><a href={href}>{label}</a></li>
@@ -319,7 +332,10 @@ export default function HomePage() {
       </section>
 
       <footer>
-        <div className="fl">{'Stay'}<span>{'Guided'}</span></div>
+        <div className="fl" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <LogoMark color="#f5f0e8" />
+          {'Stay'}<span>{'Guided'}</span>
+        </div>
         <ul className="flinks">
           <li><a href="#mission">{'Mission'}</a></li>
           <li><a href="#resources">{'Resources'}</a></li>
