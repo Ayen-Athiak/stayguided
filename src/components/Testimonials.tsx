@@ -5,56 +5,65 @@ const testimonials = [
   {
     text: "The AI Starter Handbook finally made sense of everything. I have been circling AI tools for months and this cleared it all up in one read.",
     image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=80&h=80&fit=crop&crop=face",
-    name: "Amara K.",
+    name: "Sarah M.",
     role: "Digital strategist",
+    stars: 5,
   },
   {
     text: "I went from spending three hours on content to twenty minutes. The carousel bundle changed how I show up online completely.",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face",
-    name: "Brian M.",
+    name: "Daniel K.",
     role: "Entrepreneur",
+    stars: 4,
   },
   {
     text: "The Canva templates are so considered. Everything felt intentional. My brand finally looks like something I am proud of.",
     image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face",
-    name: "Zara T.",
+    name: "Leila T.",
     role: "Freelance designer",
+    stars: 5,
   },
   {
     text: "StayGuided broke down AI in a way that actually stuck. No jargon, no fluff. Just clarity I could act on the same day.",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=face",
-    name: "David O.",
+    name: "Marcus O.",
     role: "Content creator",
+    stars: 4,
   },
   {
     text: "I have bought a lot of digital products. Most sit in a folder. This one I actually used. That says everything.",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=face",
-    name: "Fatima A.",
+    name: "Yasmin A.",
     role: "Marketing consultant",
+    stars: 4,
   },
   {
     text: "The carousel pack helped me grow my LinkedIn from 200 to over 1,400 followers in six weeks. Worth every dollar.",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face",
-    name: "James R.",
+    name: "Tom R.",
     role: "Business coach",
+    stars: 5,
   },
   {
-    text: "Finally a guide that explains AI tools without making me feel stupid. Practical, clear, and actually useful.",
+    text: "Good guide overall. Some sections I already knew but the AI tools breakdown was genuinely useful and saved me time.",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=80&h=80&fit=crop&crop=face",
-    name: "Nadia S.",
+    name: "Nina S.",
     role: "Solopreneur",
+    stars: 3,
   },
   {
     text: "The automation guide saved me probably four hours a week. I set up three workflows in one afternoon using exactly what it described.",
     image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face",
-    name: "Kofi B.",
+    name: "Emmanuel B.",
     role: "Startup founder",
+    stars: 4,
   },
   {
     text: "I redesigned my entire digital presence using the brand kit templates. My clients noticed immediately. Completely worth it.",
     image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=80&h=80&fit=crop&crop=face",
     name: "Priya N.",
     role: "Virtual assistant",
+    stars: 5,
   },
 ]
 
@@ -62,10 +71,10 @@ const firstColumn = testimonials.slice(0, 3)
 const secondColumn = testimonials.slice(3, 6)
 const thirdColumn = testimonials.slice(6, 9)
 
-function TestimonialCard({ text, image, name, role }: typeof testimonials[0]) {
+function TestimonialCard({ text, image, name, role, stars }: typeof testimonials[0]) {
   return (
     <div className="vc" style={{ marginBottom: '1.25rem' }}>
-      <div className="vc-stars">★★★★★</div>
+      <div className="vc-stars">{'★'.repeat(stars)}{'☆'.repeat(5 - stars)}</div>
       <p className="vc-quote">"{text}"</p>
       <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: '1rem' }}>
         <img
