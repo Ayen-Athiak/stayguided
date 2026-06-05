@@ -4,6 +4,7 @@ import ProductCard from '../components/ProductCard'
 import CheckoutModal from '../components/CheckoutModal'
 import { trackEvent } from '../lib/analytics'
 import type { Product } from '../types'
+import Testimonials from '../components/Testimonials'
 
 const FILTERS = ['all', 'ebook', 'canva', 'carousel'] as const
 type Filter = typeof FILTERS[number]
@@ -217,30 +218,8 @@ export default function HomePage() {
       <div className="divider" />
 
       {/* VOICES */}
-      <section className="voices" id="voices">
-        <div style={{ maxWidth: 500, marginBottom: '3rem' }}>
-          <p className="ey">Voices from the community</p>
-          <h2 className="st">People who stayed <em>guided</em></h2>
-        </div>
-        <div className="voice-grid">
-          <div className="vc">
-            <div className="vc-stars">★★★★★</div>
-            <p className="vc-quote">"The AI Starter Handbook finally made sense of everything. I have been circling AI tools for months and this cleared it all up in one read."</p>
-            <p className="vc-who"><strong>Amara K.</strong> — Digital strategist</p>
-          </div>
-          <div className="vc">
-            <div className="vc-stars">★★★★★</div>
-            <p className="vc-quote">"I went from spending three hours on content to twenty minutes. The carousel bundle changed how I show up online completely."</p>
-            <p className="vc-who"><strong>Brian M.</strong> — Entrepreneur</p>
-          </div>
-          <div className="vc">
-            <div className="vc-stars">★★★★★</div>
-            <p className="vc-quote">"The Canva templates are so considered. Everything felt intentional. My brand finally looks like something I am proud of."</p>
-            <p className="vc-who"><strong>Zara T.</strong> — Freelance designer</p>
-          </div>
-        </div>
-      </section>
-
+      <Testimonials />
+      
       {/* NEWSLETTER */}
       <section className="letter" id="letter">
         <div className="letter-inner">
