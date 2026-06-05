@@ -31,18 +31,23 @@ export default function HomePage() {
       return
     }
     trackEvent('newsletter_signup', { email: newsletter })
-    setNewsletterMsg('✓ Welcome to StayGuided. Watch your inbox.')
+    setNewsletterMsg('Welcome to StayGuided. Watch your inbox.')
     setNewsletter('')
   }
 
+  const navLinks = [
+    { href: '#mission', label: 'Our mission' },
+    { href: '#resources', label: 'Resources' },
+    { href: '#voices', label: 'Voices' },
+    { href: '#letter', label: 'Newsletter' },
+  ]
+
   return (
     <>
-      {/* MODAL */}
       {selected && (
         <CheckoutModal product={selected} onClose={() => setSelected(null)} />
       )}
 
-      {/* MOBILE MENU OVERLAY */}
       {menuOpen && (
         <div style={{
           position: 'fixed', inset: 0, zIndex: 999,
@@ -56,22 +61,19 @@ export default function HomePage() {
             style={{
               position: 'absolute', top: '1.5rem', right: '2rem',
               background: 'none', border: 'none', cursor: 'pointer',
-              color: 'var(--cream)', fontSize: '1.6rem', lineHeight: 1,
+              color: 'var(--cream)', fontSize: '1.6rem', lineHeight: '1',
             }}
-          >✕</button>
+          >
+            x
+          </button>
           <div style={{
             fontFamily: 'Cormorant Garamond, serif',
             fontSize: '1.5rem', color: 'var(--cream)', fontWeight: 300,
             marginBottom: '1rem',
           }}>
-            Stay<em style={{ fontStyle: 'italic' }}>Guided</em>
+            StayGuided
           </div>
-          {[
-            { href: '#mission', label: 'Our mission' },
-            { href: '#resources', label: 'Resources' },
-            { href: '#voices', label: 'Voices' },
-            { href: '#letter', label: 'Newsletter' },
-          ].map(({ href, label }) => (
+          {navLinks.map(({ href, label }) => (
             
               key={href}
               href={href}
@@ -103,14 +105,12 @@ export default function HomePage() {
         </div>
       )}
 
-      {/* NAV */}
       <nav>
         <div className="nav-logo">Stay<span>Guided</span></div>
         <ul className="nav-links">
-          <li><a href="#mission">Our mission</a></li>
-          <li><a href="#resources">Resources</a></li>
-          <li><a href="#voices">Voices</a></li>
-          <li><a href="#letter">Newsletter</a></li>
+          {navLinks.map(({ href, label }) => (
+            <li key={href}><a href={href}>{label}</a></li>
+          ))}
         </ul>
         <a href="#resources" className="nav-pill nav-pill-desktop">Explore resources</a>
         <button
@@ -122,7 +122,6 @@ export default function HomePage() {
         </button>
       </nav>
 
-      {/* HERO */}
       <section className="hero" id="home">
         <div className="ring ring-1" />
         <div className="ring ring-2" />
@@ -163,7 +162,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* MISSION */}
       <section className="mission" id="mission">
         <div className="mission-body">
           <p className="ey">Why StayGuided exists</p>
@@ -207,7 +205,6 @@ export default function HomePage() {
 
       <div className="divider" />
 
-      {/* RESOURCES */}
       <section className="resources" id="resources">
         <div className="res-head">
           <div>
@@ -229,7 +226,6 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-
         {loading ? (
           <div className="rc-loading">
             <div className="spinner" style={{ borderTopColor: 'var(--green)', borderColor: 'var(--border2)', width: 28, height: 28, borderWidth: 3 }} />
@@ -257,7 +253,6 @@ export default function HomePage() {
 
       <div className="divider" />
 
-      {/* COMMUNITY */}
       <section className="community">
         <div className="ring ring-1" />
         <div className="ring ring-2" />
@@ -284,10 +279,8 @@ export default function HomePage() {
 
       <div className="divider" />
 
-      {/* VOICES */}
       <Testimonials />
 
-      {/* NEWSLETTER */}
       <section className="letter" id="letter">
         <div className="letter-inner">
           <div className="letter-body">
@@ -307,14 +300,13 @@ export default function HomePage() {
               />
               <button className="email-sub" onClick={handleNewsletterSubmit}>Join the list</button>
             </div>
-            <p className="fn" style={newsletterMsg.startsWith('✓') ? { color: 'var(--green)' } : { color: 'var(--text-dim)' }}>
+            <p className="fn" style={newsletterMsg.startsWith('W') ? { color: 'var(--green)' } : { color: 'var(--text-dim)' }}>
               {newsletterMsg || 'No spam, ever. Unsubscribe any time.'}
             </p>
           </div>
         </div>
       </section>
 
-      {/* FOOTER */}
       <footer>
         <div className="fl">Stay<span>Guided</span></div>
         <ul className="flinks">
