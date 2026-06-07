@@ -83,7 +83,7 @@ function TestimonialCard({ text, image, name, role, stars }: typeof testimonials
           style={{ borderRadius: '50%', objectFit: 'cover', width: 32, height: 32, flexShrink: 0 }}
         />
         <p className="vc-who">
-          <strong>{name}</strong> — {role}
+          <strong>{name}</strong>, {role}
         </p>
       </div>
     </div>
