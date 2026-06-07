@@ -46,7 +46,7 @@ export default function CheckoutModal({ product, onClose }: Props) {
       })
 
       if (fnError || !data?.url) {
-        throw new Error(fnError?.message || 'Could not start checkout. Please try again.')
+        throw new Error(fnError?.message || 'Checkout failed. Please try again.')
       }
 
       trackEvent('checkout_started', {
@@ -60,7 +60,7 @@ export default function CheckoutModal({ product, onClose }: Props) {
 
     } catch (err) {
       captureError(err, { product_id: product.id, customer_email: email })
-      setError(err instanceof Error ? err.message : 'Something went wrong.')
+      setError(err instanceof Error ? err.message : 'Something went wrong. Please try again.')
       setLoading(false)
     }
   }
@@ -141,7 +141,7 @@ export default function CheckoutModal({ product, onClose }: Props) {
             </button>
 
             <p className="modal-note">
-              {'Secure checkout powered by Lemon Squeezy. Your card details are never stored.'}
+              {'Secure checkout by Lemon Squeezy. Your card details are never stored on our servers.'}
             </p>
           </div>
         </div>
