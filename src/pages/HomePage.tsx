@@ -39,7 +39,7 @@ export default function HomePage() {
       return
     }
     trackEvent('newsletter_signup', { email: newsletter })
-    setNewsletterMsg('Welcome to StayGuided. Watch your inbox.')
+    setNewsletterMsg('You are in. Watch your inbox.')
     setNewsletter('')
   }
 
@@ -157,7 +157,7 @@ export default function HomePage() {
             <strong>{'Stay guided.'}</strong>
           </h1>
           <p className="hero-body">
-            {'The digital world moves fast. StayGuided exists to slow it down for you, with clear, honest resources on AI, tech, and digital tools that actually make sense.'}
+            {'The digital world moves fast. StayGuided exists to slow it down for you. Clear, honest resources on AI, tech, and digital tools that actually make sense.'}
           </p>
           <div className="btn-row">
             <a href="#resources" className="btn-cream">{'Explore resources'}</a>
@@ -201,7 +201,7 @@ export default function HomePage() {
               </div>
               <div className="pb">
                 <strong>{'AI & tech e-books'}</strong>
-                <span>{'In-depth yet accessible guides on artificial intelligence, automation, and the tools rewriting the rules.'}</span>
+                <span>{'Clear, accessible guides on artificial intelligence, automation, and the tools rewriting the rules.'}</span>
               </div>
             </div>
             <div className="pillar">
@@ -282,7 +282,7 @@ export default function HomePage() {
         <div style={{ position: 'relative', zIndex: 1 }}>
           <p className="comm-ey">{'The StayGuided way'}</p>
           <h2 className="comm-title">{'Not just a product.'}<br />{'A '}<em>{'perspective.'}</em></h2>
-          <p className="comm-body">{'Every resource we create comes from one place: a genuine belief that understanding the digital world is one of the most important things you can do right now. These are not just downloads. They are starting points.'}</p>
+          <p className="comm-body">{'Every resource we create comes from one place. A genuine belief that understanding the digital world is one of the most important things you can do right now. These are not just downloads. They are starting points.'}</p>
         </div>
         <div className="comm-cards">
           <div className="cc">
@@ -323,7 +323,7 @@ export default function HomePage() {
               />
               <button className="email-sub" onClick={handleNewsletterSubmit}>{'Join the list'}</button>
             </div>
-            <p className="fn" style={newsletterMsg.startsWith('W') ? { color: 'var(--green)' } : { color: 'var(--text-dim)' }}>
+            <p className="fn" style={newsletterMsg.startsWith('Y') ? { color: 'var(--green)' } : { color: 'var(--text-dim)' }}>
               {newsletterMsg || 'No spam, ever. Unsubscribe any time.'}
             </p>
           </div>
