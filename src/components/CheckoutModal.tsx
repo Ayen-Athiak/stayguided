@@ -23,6 +23,9 @@ export default function CheckoutModal({ product, onClose }: Props) {
 
   const siteUrl = import.meta.env.VITE_SITE_URL || window.location.origin
 
+  const formatPrice = (cents: number) =>
+    (cents / 100).toFixed(2).replace(/\.00$/, '')
+
   async function handleCheckout() {
     if (!email || !email.includes('@')) {
       setError('Please enter a valid email address.')
@@ -69,19 +72,19 @@ export default function CheckoutModal({ product, onClose }: Props) {
   return (
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal">
-        <button className="modal-close" onClick={onClose} aria-label="Close">×</button>
+        <button className="modal-close" onClick={onClose} aria-label="Close">{'×'}</button>
 
         <div className={`modal-cover ${coverClass[product.cover_color] || 'cov-g'}`}>
           <div style={{ fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase' as const, opacity: 0.6, marginBottom: '0.5rem' }}>
             {product.type}
           </div>
           <div style={{ width: 24, height: '0.5px', background: 'rgba(245,240,232,0.4)', marginBottom: '0.5rem' }} />
-          <div style={{ fontFamily: 'Cormorant Garamond, serif', fontSize: 'clamp(1.1rem, 3vw, 1.5rem)', fontWeight: 400, lineHeight: 1.3, textAlign: 'center' as const, padding: '0 1rem' }}>
+          <div style={{ fontFamily: 'Fraunces, serif', fontSize: 'clamp(1.1rem, 3vw, 1.5rem)', fontWeight: 400, lineHeight: 1.3, textAlign: 'center' as const, padding: '0 1rem' }}>
             {product.name}
           </div>
           <div style={{ width: 24, height: '0.5px', background: 'rgba(245,240,232,0.4)', marginTop: '0.5rem' }} />
           <div style={{ fontSize: '0.6rem', letterSpacing: '0.22em', textTransform: 'uppercase' as const, opacity: 0.4, marginTop: '0.5rem' }}>
-            StayGuided
+            {'StayGuided'}
           </div>
         </div>
 
@@ -91,14 +94,14 @@ export default function CheckoutModal({ product, onClose }: Props) {
           <p className="modal-desc">{product.description}</p>
 
           <div className="modal-price-row">
-            <span className="modal-price-label">One-time payment</span>
-            <span className="modal-price-val">${(product.price / 100).toFixed(0)}</span>
+            <span className="modal-price-label">{'One-time payment'}</span>
+            <span className="modal-price-val">${formatPrice(product.price)}</span>
           </div>
 
           <div className="modal-includes">
-            <span>Instant download after payment</span>
-            <span>Download link sent to your email</span>
-            <span>Lifetime access, no subscription</span>
+            <span>{'Instant download after payment'}</span>
+            <span>{'Download link sent to your email'}</span>
+            <span>{'Lifetime access, no subscription'}</span>
           </div>
 
           <div className="modal-form">
@@ -130,15 +133,15 @@ export default function CheckoutModal({ product, onClose }: Props) {
               {loading ? (
                 <>
                   <div className="spinner" />
-                  Redirecting to checkout...
+                  {'Redirecting to checkout...'}
                 </>
               ) : (
-                <>Get this for ${(product.price / 100).toFixed(0)}</>
+                <>{`Get this for $${formatPrice(product.price)}`}</>
               )}
             </button>
 
             <p className="modal-note">
-              Secure checkout powered by Lemon Squeezy. Your card details are never stored.
+              {'Secure checkout powered by Lemon Squeezy. Your card details are never stored.'}
             </p>
           </div>
         </div>
