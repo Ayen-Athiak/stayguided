@@ -43,16 +43,14 @@ export default function DownloadPage() {
   async function handleDownload() {
     if (!download || !product?.file_url) return
 
-    // Increment download count
     await supabase
       .from('downloads')
       .update({ downloaded_count: download.downloaded_count + 1 })
       .eq('id', download.id)
 
-    // Get signed URL from Supabase Storage
     const { data } = await supabase.storage
       .from('products')
-      .createSignedUrl(product.file_url, 60) // 60 second signed URL
+      .createSignedUrl(product.file_url, 60)
 
     if (data?.signedUrl) {
       window.open(data.signedUrl, '_blank')
@@ -66,7 +64,7 @@ export default function DownloadPage() {
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '1rem' }}>
             <div className="spinner" style={{ borderTopColor: 'var(--green)', borderColor: 'var(--border2)' }} />
           </div>
-          <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>Validating your download link...</p>
+          <p style={{ color: 'var(--text-dim)', fontSize: '0.85rem' }}>{'Validating your download link...'}</p>
         </div>
       </div>
     )
@@ -76,13 +74,12 @@ export default function DownloadPage() {
     return (
       <div className="download-page">
         <div className="download-card">
-          <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⏱</div>
-          <h1 className="download-title">Link expired</h1>
+          <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{'⏱'}</div>
+          <h1 className="download-title">{'Link expired'}</h1>
           <p className="download-body">
-            This download link has expired or reached its download limit.
-            If you need a new link, reply to your confirmation email and we will sort it out.
+            {'This download link has expired or reached its download limit. If you need a new one, reply to your confirmation email and we will sort it out.'}
           </p>
-          <button className="btn-download" onClick={() => navigate('/')}>Back to StayGuided</button>
+          <button className="btn-download" onClick={() => navigate('/')}>{'Back to StayGuided'}</button>
         </div>
       </div>
     )
@@ -92,12 +89,12 @@ export default function DownloadPage() {
     return (
       <div className="download-page">
         <div className="download-card">
-          <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>✕</div>
-          <h1 className="download-title">Invalid link</h1>
+          <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{'✕'}</div>
+          <h1 className="download-title">{'Invalid link'}</h1>
           <p className="download-body">
-            This download link is not valid. Please check your email for the correct link.
+            {'This download link is not valid. Please check your email for the correct link. If you are still having trouble, reply to your receipt email and we will help.'}
           </p>
-          <button className="btn-download" onClick={() => navigate('/')}>Back to StayGuided</button>
+          <button className="btn-download" onClick={() => navigate('/')}>{'Back to StayGuided'}</button>
         </div>
       </div>
     )
@@ -112,24 +109,24 @@ export default function DownloadPage() {
         <div
           style={{
             background: 'var(--green)', color: 'var(--cream)',
-            fontFamily: 'Cormorant Garamond, serif', fontSize: '1.1rem',
+            fontFamily: 'Fraunces, serif', fontSize: '1.1rem',
             padding: '1.5rem', marginBottom: '1.5rem', lineHeight: 1.4,
           }}
         >
           {product?.name}
         </div>
 
-        <h1 className="download-title">Your download is ready</h1>
+        <h1 className="download-title">{'Your download is ready'}</h1>
         <p className="download-body">
-          Click below to download your resource. Save it somewhere safe once downloaded.
+          {'Click below to download your file. Save it somewhere you will actually find it.'}
         </p>
 
         <button className="btn-download" onClick={handleDownload}>
-          Download now
+          {'Download now'}
         </button>
 
         <p className="download-meta">
-          {remaining} download{remaining !== 1 ? 's' : ''} remaining · expires {expires}
+          {remaining} {'download'}{remaining !== 1 ? 's' : ''} {'remaining, expires'} {expires}
         </p>
       </div>
     </div>
