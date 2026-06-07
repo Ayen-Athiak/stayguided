@@ -46,7 +46,7 @@ export default function ProductCard({ product, onSelect }: Props) {
         <div className="rc-title">{product.name}</div>
         <div className="rc-desc">{product.description}</div>
         <div className="rc-foot">
-          <span className="rc-price">${(product.price / 100).toFixed(0)}</span>
+          <span className="rc-price">${(product.price / 100).toFixed(2).replace(/\.00$/, '')}</span>
           <span className="rc-arrow">→</span>
         </div>
       </div>
