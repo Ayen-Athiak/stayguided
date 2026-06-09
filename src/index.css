@@ -260,7 +260,7 @@ section { padding: 5.5rem 4rem; }
 .rc-desc { font-size: 0.75rem; color: var(--text-dim); line-height: 1.65; margin-bottom: 0.9rem; }
 .rc-foot { display: flex; justify-content: space-between; align-items: center; }
 .rc-price { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--green); font-weight: 400; }
-.rc-arrow { font-size: 1rem; color: rgba(58,90,64,0.25); transition: color 0.2s; }
+.rc-arrow { font-size: 1.3rem; color: rgba(58,90,64,0.3); transition: color 0.2s; font-weight: 400; }
 .rc-loading { display: flex; align-items: center; justify-content: center; padding: 3rem; }
 
 /* MODAL */
